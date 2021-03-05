@@ -105,3 +105,4 @@ dist
 
 # Typescript build directories
 dist/
+build/
