@@ -1,5 +1,5 @@
 {
-	"main": "dist/index.js",
+	"main": "build/index.js",
 	"scripts": {
 		"build": "tsc",
 		"start": "tsc & node .",
@@ -12,6 +12,7 @@
 	"devDependencies": {
 		"@types/dotenv": "^8.2.0",
 		"@types/express": "^4.17.11",
+		"@types/mysql": "^2.15.18",
 		"@types/node": "^14.14.31",
 		"@typescript-eslint/eslint-plugin": "^4.16.1",
 		"@typescript-eslint/parser": "^4.16.1",
