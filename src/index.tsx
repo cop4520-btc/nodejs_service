@@ -1,4 +1,4 @@
-import body_parser from "body-parser";
+import bodyParser from "body-parser";
 import * as dotenv from "dotenv";
 import express from "express";
 
@@ -7,7 +7,8 @@ import { login } from "./api/login";
 
 const app = express();
 dotenv.config();
-app.use(body_parser);
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 const PORT = process.env.PORT || 5000;
 
 app.get('/', (_, res) => {
