@@ -55,22 +55,7 @@ export async function login(request: Request, response: Response, next: Callable
 	// query the database for the Users with matching credentials
 	try
 	{
-		const storeQueryResult = (values: Array<JSON>) => {
-			result = values
-		}
-
-		let result: Array<JSON>;
-		
-		await connection.query(queryString, function(error: string, rows) {
-			if (error)
-			{
-				throw new Error(error);
-			}
-
-			storeQueryResult(rows);
-		});
-
-		console.log(result);
+		let result = connection.query(queryString);
 	}
 	catch (e)
 	{
