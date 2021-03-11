@@ -1,7 +1,6 @@
 import * as mysql from "mysql";
 import { LoginData, LoginReturnPackage, UserData } from "../types/loginTypes";
 import { Request, Response } from "express";
-import { resolve } from "node:path";
 
 export async function login(request: Request, response: Response, next: CallableFunction): Promise<void>
 {
