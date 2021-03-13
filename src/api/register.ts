@@ -134,9 +134,11 @@ export async function register(request: Request, response: Response, next: Calla
 	}
 	catch (e)
 	{
-
+		connection.end();
+		returnPackage.error = e;
+		response.json(returnPackage);
+		response.status(500);
+		response.send();
+		return;
 	}
-
-	// let queryString: string = "INSERT INTO Users (username, password, firstname, lastname, address, lastUpdate, balance, spent)\n VALUES (";
-	// queryString = queryString.concat("'" + userData.username + '')
 }
