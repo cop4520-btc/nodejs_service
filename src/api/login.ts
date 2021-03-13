@@ -1,20 +1,24 @@
 import * as mysql from "mysql";
-import { LoginData, LoginReturnPackage, UserData } from "../types/loginTypes";
+import { LoginData, LoginReturnPackage } from "../types/loginTypes";
+import { UserData } from "../types/userTypes";
 import { Request, Response } from "express";
+import { UsersQueryReturn } from "src/types/queryReturnTypes";
 
 export async function login(request: Request, response: Response, next: CallableFunction): Promise<void>
 {
 	let returnPackage: LoginReturnPackage = {
 		success: false,
 		error: "",
-		userID: -1,
-		username: "",
-		firstname: "",
-		lastname: "",
-		address: "",
-		lastUpdate: 0,
-		balance: 0.0,
-		spent: 0.0
+		userData: {
+			userID: -1,
+			username: "",
+			firstname: "",
+			lastname: "",
+			address: "",
+			lastUpdate: 0,
+			balance: 0.0,
+			spent: 0.0
+		}
 	};
 
 	// configure mysql connection data
@@ -73,17 +77,17 @@ export async function login(request: Request, response: Response, next: Callable
 				return;
 			}
 
-			let userData: UserData = JSON.parse(JSON.stringify(rows[0]));
+			let userData: UsersQueryReturn = JSON.parse(JSON.stringify(rows[0]));
 
 			// transfer query data to returnPackage fields
-			returnPackage.userID = userData.ID;
-			returnPackage.username = userData.username;
-			returnPackage.firstname = userData.firstname;
-			returnPackage.lastname = userData.lastname;
-			returnPackage.address = userData.address;
-			returnPackage.lastUpdate = userData.lastUpdate;
-			returnPackage.balance = userData.balance;
-			returnPackage.spent = userData.spent;
+			returnPackage.userData.userID = userData.id;
+			returnPackage.userData.username = userData.username;
+			returnPackage.userData.firstname = userData.firstname;
+			returnPackage.userData.lastname = userData.lastname;
+			returnPackage.userData.address = userData.address;
+			returnPackage.userData.lastUpdate = userData.lastUpdate;
+			returnPackage.userData.balance = userData.balance;
+			returnPackage.userData.spent = userData.spent;
 
 			returnPackage.success = true;
 			response.json(returnPackage);
