@@ -26,7 +26,7 @@ export async function login(request: Request, response: Response, next: Callable
 		user: process.env.RDS_USERNAME,
 		password: process.env.RDS_PASSWORD,
 		port: Number(process.env.RDS_PORT),
-		database: "btc"
+		database: process.env.RDS_DATABASE
 	};
 
 	const connection: mysql.Connection = mysql.createConnection(connectionData);
