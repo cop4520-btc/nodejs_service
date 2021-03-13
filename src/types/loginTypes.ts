@@ -1,4 +1,4 @@
-import { UserData } from "./userTypes";
+import { UserDataWithoutPassword } from "./userTypes";
 
 export interface LoginData
 {
@@ -10,5 +10,5 @@ export interface LoginReturnPackage
 {
 	success: boolean,
 	error: string,
-	userData: UserData
+	userData: UserDataWithoutPassword
 };
