@@ -41,6 +41,10 @@ The second terminal will be used to start the frontend nodejs server. To compile
 
 After these steps are complete, the frontend server will start on port 3000 unless otherwise specified in your .env file. A new tab should automatically open in your default browser when the server is finished starting.
 
+### It's Not Over Yet
+
+The nodejs environment of the app is now running. However, assuming you have not already done so, the maven environment of the application also needs to be compiled and ran so the app is able to perform the bitcoin transactions and calculations. Information on the maven envirnoment can be found in the *Microservice Server* section.
+
 ## Microservice Server
 
 This application uses an external microservice using a maven server to calculate the bitcoin transactions and exchange rates.
