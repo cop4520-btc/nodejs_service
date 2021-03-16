@@ -1,8 +1,7 @@
 import * as mysql from "mysql";
 import { RegisterReturnPackage } from "../types/registerTypes";
 import { Request, Response } from "express";
-import { UserDataWithoutPassword, UserDataWithPassword } from "src/types/userTypes";
-import { stringify } from "querystring";
+import { UserDataWithPassword } from "src/types/userTypes";
 import { UsersQueryReturn } from "src/types/queryReturnTypes";
 
 export async function register(request: Request, response: Response, next: CallableFunction)
