@@ -5,6 +5,7 @@ import express from "express";
 // api endpoints
 import { login } from "./api/login";
 import { register } from "./api/register";
+import { updateUser } from "./api/updateUser";
 
 const app = express();
 dotenv.config();
@@ -18,5 +19,6 @@ app.get('/', (_, res) => {
 
 app.post("/api/login", login);
 app.post("/api/register", register);
+app.post("/api/updateUser", updateUser);
 
 app.listen(PORT, () => console.log("Running on port " + PORT));
