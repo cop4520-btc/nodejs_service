@@ -1,20 +1,39 @@
 // React imports
 
+import React from "react";
 import {
 	Redirect,
 	Route,
 	BrowserRouter as Router,
 	Switch,
 } from "react-router-dom";
+import { PageNotFound } from "./Components/PageNotFound";
+import Login from "./login";
+import './App.css'
+
+
+
 
 function App()
 {
 	return (
-		<Router>
-			<Switch>
+
+		
+		<main className="main">
+			<Router>
 				
-			</Switch>
-		</Router>
+				<Switch>
+					
+					<Route exact path = "/login"> 
+						<Login />
+					</Route>		
+					
+			
+					
+				</Switch>
+			</Router>
+		</main>
+		
 	);
 }
 
