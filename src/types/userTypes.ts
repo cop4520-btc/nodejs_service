@@ -22,3 +22,13 @@ export interface UserDataWithPassword
 	balance: number,
 	spent: number
 }
+
+export interface UserInformationUpdate
+{
+	userID: number,
+	firstname: string | null,
+	lastname: string | null,
+	lastUpate: number | null,
+	balance: number | null,
+	spent: number | null
+}
