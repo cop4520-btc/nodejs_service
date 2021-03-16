@@ -1,6 +1,5 @@
 import * as mysql from "mysql";
 import { LoginData, LoginReturnPackage } from "../types/loginTypes";
-import { UserData } from "../types/userTypes";
 import { Request, Response } from "express";
 import { UsersQueryReturn } from "src/types/queryReturnTypes";
 
@@ -60,6 +59,7 @@ export async function login(request: Request, response: Response, next: Callable
 		connection.query(queryString, (error: string, rows: Array<Object>) => {
 			if (error)
 			{
+				connection.end();
 				returnPackage.error = error;
 				response.json(returnPackage);
 				response.status(500);
@@ -70,9 +70,10 @@ export async function login(request: Request, response: Response, next: Callable
 			// return with error if no user was found
 			if (rows.length < 1)
 			{
+				connection.end();
 				returnPackage.error = "Username or Password incorrect";
 				response.json(returnPackage);
-				response.status(404);
+				response.status(400);
 				response.send();
 				return;
 			}
