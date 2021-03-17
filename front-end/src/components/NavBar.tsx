@@ -20,7 +20,9 @@ export class NavigationBar extends React.Component
 		return (
 			<div className="NavbarDiv">
 				<Navbar bg="light" expand="lg">
-					<Navbar.Brand href="/transactions"><img src={process.env.PUBLIC_URL + "/Bitcoin_logo.svg"} /></Navbar.Brand>
+					<Navbar.Brand href="/transactions">
+						<img src={process.env.PUBLIC_URL + "/Bitcoin_logo.svg"} />
+					</Navbar.Brand>
 					<Button variant="outline-primary" onClick={doLogout}>Logout</Button>
 				</Navbar>
 			</div>
