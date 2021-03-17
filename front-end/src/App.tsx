@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import { PageNotFound } from "./Components/PageNotFound";
 import Login from "./login";
+import { Signup } from "./signup";
 import './App.css'
 
 
@@ -24,9 +25,13 @@ function App()
 				
 				<Switch>
 					
-					<Route exact path = "/login"> 
+					<Route exact path = "/"> 
 						<Login />
 					</Route>		
+
+					<Route exact path = "/register"> 
+						<Signup />
+					</Route>	
 					
 			
 					

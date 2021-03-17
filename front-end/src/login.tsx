@@ -1,5 +1,7 @@
 import React, { useReducer, useEffect } from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom';
+
 
 import TextField from '@material-ui/core/TextField';
 import Card from '@material-ui/core/Card';
@@ -9,6 +11,7 @@ import CardHeader from '@material-ui/core/CardHeader';
 import Button from '@material-ui/core/Button';
 import Image from 'react-bootstrap/Image'
 import './login.css'
+
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -189,9 +192,11 @@ const Login = () => {
               onChange={handlePasswordChange}
               onKeyPress={handleKeyPress}
             />
+			<Link className="registerLink" id="registerLink" to="/register">Don't have an account? Sign Up</Link>
           </div>
         </CardContent>
         <CardActions>
+
           <Button
             variant="contained"
             size="large"
