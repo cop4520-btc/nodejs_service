@@ -1,0 +1,13 @@
+.NavbarDiv
+{
+	display: inline-block;
+	border: 2px solid black;
+	margin: auto;
+	height: 10%;
+}
+
+.NavBarLogo
+{
+	height: 100%;
+	width: 10%;
+}

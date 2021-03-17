@@ -1,18 +1,27 @@
-import React from "react";
-import { Button, Nav, Navbar} from "react-bootstrap";
+import React, { MouseEvent } from "react";
+import { Button, Navbar} from "react-bootstrap";
+
+// CSS imports
+import "./NavBar.css";
 
 export class NavigationBar extends React.Component
 {
 	render()
 	{
+		function doLogout(event: MouseEvent<HTMLButtonElement>)
+		{
+			event.preventDefault();
+
+			localStorage.removeItem("user_data");
+
+			window.location.href = "/";
+		}
+
 		return (
-			<div>
+			<div className="NavbarDiv">
 				<Navbar bg="light" expand="lg">
-					<Navbar.Brand href="/transactions"><img src="../../public/Bitcoin_logo.svg" alt="App Logo" /></Navbar.Brand>
-					<Navbar.Toggle aria-controls="basic-navbar-nav" />
-					<Navbar.Collapse id="basic-navbar-nav">
-						<Button variant="outline-success">Logout</Button>
-					</Navbar.Collapse>
+					<Navbar.Brand href="/transactions"><img src={process.env.PUBLIC_URL + "/Bitcoin_logo.svg"} /></Navbar.Brand>
+					<Button variant="outline-primary" onClick={doLogout}>Logout</Button>
 				</Navbar>
 			</div>
 		);
