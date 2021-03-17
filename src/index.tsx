@@ -4,6 +4,7 @@ import express from "express";
 
 // api endpoints
 import { login } from "./api/login";
+import { makeTransaction } from "./api/makeTransaction";
 import { register } from "./api/register";
 import { updateUser } from "./api/updateUser";
 
@@ -18,6 +19,7 @@ app.get('/', (_, res) => {
 });
 
 app.post("/api/login", login);
+app.post("/api/makeTransaction", makeTransaction);
 app.post("/api/register", register);
 app.post("/api/updateUser", updateUser);
 
