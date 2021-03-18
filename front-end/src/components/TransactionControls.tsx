@@ -9,7 +9,7 @@ export class TransactionControls extends React.Component{
 	{
 		return(
 			<div className="transaction-controls" >
-				<Card>
+				<Card border="secondary" style={{ width: '18rem' }}>
 					<Card.Header as="h5">Make a Transaction</Card.Header>
 					<Card.Body>
 						<Card.Title></Card.Title>
