@@ -21,12 +21,15 @@ function App()
 		<main className="main">
 			<Router>
 				<Switch>
-					<Route exact path = "/"> 
+					<Route exact path = "/">
 						<LoginPage />
-					</Route>		
-					<Route exact path = "/register"> 
+					</Route>
+					<Route exact path = "/register">
 						<SignupPage />
-					</Route>	
+					</Route>
+					<Route exact path = "/transactions">
+						Todo: Implement transactions page
+					</Route>
 				</Switch>
 			</Router>
 		</main>

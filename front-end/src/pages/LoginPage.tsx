@@ -51,6 +51,8 @@ export default function LoginPage()
 
 		// store the userData in local storage
 		localStorage.setItem("user_data", JSON.stringify(data.userData));
+
+		window.location.href = "/transactions";
 	};
 
 	const changeUsername = (event: any) =>
