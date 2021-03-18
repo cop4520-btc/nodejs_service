@@ -1,0 +1,11 @@
+.transaction-column{
+	display: flex;
+}
+
+.transaction-column .left-side{
+	flex: 1;
+}
+
+.transaction-column .right-side{
+	flex: 3;
+}

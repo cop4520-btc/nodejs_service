@@ -2,8 +2,10 @@
 {
 	display: inline-block;
 	border: 2px solid black;
-	margin: auto;
+	margin: 10px;
 	height: 10%;
+	width: 100%;
+	padding: 5px;
 }
 
 .NavBarLogo
