@@ -5,7 +5,10 @@
 
 .LoginBox
 {
-	margin: auto;
+	position: absolute;
+	top: 40%;
+	height: 20%;
+	left: 40%;
 	border: 2px solid black;
 	text-align: center;
 	width: 20%;
@@ -14,7 +17,7 @@
 .LoginForm
 {
 	margin: auto;
-	text-align: left;
+	text-align: center;
 }
 
 .LoginLogo
