@@ -6,7 +6,7 @@ import buildpath from "../util/buildpath";
 
 // Common Type imports
 import { LoginApiPayload } from "../commonTypes/ApiPayloads";
-import ApiRequest from "../commonTypes/ApiRequests";
+import { LoginResponse } from "../commonTypes/ApiResponses";
 
 // CSS imports
 import "./LoginPage.css";
@@ -33,11 +33,26 @@ export default function LoginPage()
 			password: password
 		};
 
-		let request: ApiRequest = {
+		let request: Object = {
 			method: "POST",
 			body: JSON.stringify(payload),
-			headers: {"Content-Type": "aplication/json"}
+			headers: {
+				"Content-Type" : "application/json"
+			}
 		};
+
+		let response: Response = await fetch(
+			buildpath("/api/login"),
+			request,
+		);
+
+		let data: LoginResponse = await JSON.parse(await response.text());
+
+		if (!data.success)
+		{
+			setMessage(data.error);
+			return;
+		}
 	};
 
 	const changeUsername = (event: any) =>
@@ -70,6 +85,8 @@ export default function LoginPage()
 							<br />
 							<Form.Control type="password" onChange={changePassword} />
 						</Form.Group>
+						<span className="errorMessage">{message}</span>
+						<br />
 						<Button variant="primary" type="submit">
 							Submit
 						</Button>
