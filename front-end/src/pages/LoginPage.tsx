@@ -43,7 +43,7 @@ export default function LoginPage()
 
 		let response: Response = await fetch(
 			buildpath("/api/login"),
-			request,
+			request
 		);
 
 		let data: LoginResponse = await JSON.parse(await response.text());
@@ -78,12 +78,12 @@ export default function LoginPage()
 						<Form.Group controlId="formUsername">
 							<Form.Label>Username</Form.Label>
 							<br />
-							<Form.Control type="text" onChange={changeUsername} />
+							<Form.Control type="text" onChange={changeUsername} required={true} />
 						</Form.Group>
 						<Form.Group controlId="formPassword">
 							<Form.Label>Password</Form.Label>
 							<br />
-							<Form.Control type="password" onChange={changePassword} />
+							<Form.Control type="password" onChange={changePassword} required={true} />
 						</Form.Group>
 						<span className="errorMessage">{message}</span>
 						<br />
