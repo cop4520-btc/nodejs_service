@@ -8,6 +8,7 @@ import { Wallet } from "../components/Wallet";
 import NoTransactions from "../components/NoTransactions";
 
 // Type imports
+import { TransactionCardProps } from "../components/TransactionCard";
 import { UserDataWithoutPassword } from "../commonTypes/UserTypes";
 import { GetTransactionsResponse, Transaction } from "../commonTypes/ApiResponses";
 import { GetTransactionsPayload } from "../commonTypes/ApiPayloads";
@@ -75,16 +76,10 @@ export class TransactionsPage extends React.Component<TransactionsPageProps, Get
 
 	render()
 	{
-		const createTransactionCard = () =>
+		const createTransactionCard = (transaction: Transaction, index: number) =>
 		{
-			let i: number;
-			for (i = 0; i < this.state.numTransactions; i++)
-			{
-
-			}
-
 			return (
-				<TransactionCard />
+				<TransactionCard id={"transaction_" + index} transactionData={transaction} />
 			);	
 		};
 
