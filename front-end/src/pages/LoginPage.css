@@ -1,0 +1,19 @@
+.LoginBox
+{
+	margin: auto;
+	border: 2px solid black;
+	text-align: center;
+	width: 20%;
+}
+
+.LoginForm
+{
+	margin: auto;
+	text-align: left;
+}
+
+.LoginLogo
+{
+	width: 100%;
+	margin: auto;
+}

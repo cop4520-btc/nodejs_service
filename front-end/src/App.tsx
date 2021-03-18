@@ -7,9 +7,9 @@ import {
 	BrowserRouter as Router,
 	Switch,
 } from "react-router-dom";
-import { PageNotFound } from "./Components/PageNotFound";
-import Login from "./login";
-import { Signup } from "./signup";
+import { PageNotFound } from "./pages/PageNotFound";
+import LoginPage from "./pages/LoginPage";
+import { SignupPage } from "./pages/SignupPage";
 import './App.css'
 
 
@@ -18,23 +18,15 @@ import './App.css'
 function App()
 {
 	return (
-
-		
 		<main className="main">
 			<Router>
-				
 				<Switch>
-					
 					<Route exact path = "/"> 
-						<Login />
+						<LoginPage />
 					</Route>		
-
 					<Route exact path = "/register"> 
-						<Signup />
+						<SignupPage />
 					</Route>	
-					
-			
-					
 				</Switch>
 			</Router>
 		</main>

@@ -1,13 +1,13 @@
 import { Form, Button } from 'react-bootstrap';
 
-import "./signup.css";
+import "./SignupPage.css";
 
 
 function doSignup(){
 	
 }
 
-export function Signup(){
+export function SignupPage(){
 	return(
 		<div className="signup-box">
 			<Form onSubmit={doSignup}>
