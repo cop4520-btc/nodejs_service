@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 
 // Page imports
-import { LoginPage } from "./pages/LoginPage";
+import { TransactionsPage } from "./pages/TransactionsPage";
 
 function App()
 {
@@ -16,7 +16,7 @@ function App()
 		<Router>
 			<Switch>
 				<Route path="/transactions" exact>
-					<LoginPage />
+					<TransactionsPage />
 				</Route>
 			</Switch>
 		</Router>
