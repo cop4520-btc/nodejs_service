@@ -1,4 +1,5 @@
 import React from "react";
+import { Button, Card } from "react-bootstrap";
 
 import "./TransactionControls.css";
 
@@ -8,12 +9,17 @@ export class TransactionControls extends React.Component{
 	{
 		return(
 			<div className="transaction-controls" >
-				<button className="buy">
-					Buy
-				</button>
-				<button className="sell">
-					Sell
-				</button>
+				<Card>
+					<Card.Header as="h5">Make a Transaction</Card.Header>
+					<Card.Body>
+						<Card.Title></Card.Title>
+						<Card.Text>
+						
+						</Card.Text>
+						<Button variant="outline-primary">Buy</Button>{' '}
+						<Button variant="outline-primary">Sell</Button>{' '}
+					</Card.Body>
+				</Card>
 			</div>
 		);
 	}

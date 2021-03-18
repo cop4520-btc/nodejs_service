@@ -1,4 +1,5 @@
 import React from "react";
+import { Card } from "react-bootstrap";
 
 import "./TransactionCard.css";
 
@@ -8,10 +9,13 @@ export class TransactionCard extends React.Component{
 	{
 		return(
 			<div className="transaction-card" >
-				<div className="category-name">
-					category name 
-				</div>
-				<div className="userID">
+				<Card>
+				<Card.Header>Bitcoin Transaction</Card.Header>
+				<Card.Body>
+					<blockquote className="blockquote mb-0">
+					<p>
+						{' '}
+						<div className="userID">
 					userID
 				</div>
 				<div className="price-BTC">
@@ -19,7 +23,14 @@ export class TransactionCard extends React.Component{
 				</div>
 				<div className="price-USD">
 					price USD				
-				</div>
+				</div>{' '}
+					</p>
+					<footer className="blockquote-footer">
+						Completed
+					</footer>
+					</blockquote>
+				</Card.Body>
+				</Card>
 			</div>
 		);
 	}

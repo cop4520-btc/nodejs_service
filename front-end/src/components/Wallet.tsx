@@ -1,4 +1,5 @@
 import React from "react";
+import { Card } from "react-bootstrap";
 
 import "./Wallet.css";
 
@@ -8,12 +9,16 @@ export class Wallet extends React.Component{
 	{
 		return(
 			<div className="wallet">
-				<div className="username">
-					Username
-				</div>
-				<div className="balance">
-					Balance
-				</div>
+				<Card border="secondary" style={{ width: '18rem' }}>
+    				<Card.Header>Your Wallet</Card.Header>
+					<Card.Body>
+					<Card.Title>Username</Card.Title>
+					<Card.Text>
+						Balance
+					</Card.Text>
+					</Card.Body>
+  				</Card>
+ 				 <br />
 			</div>
 		);
 	}

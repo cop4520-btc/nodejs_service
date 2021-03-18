@@ -3,7 +3,7 @@
 }
 
 .transaction-column .left-side{
-	flex: 1;
+	flex: .5;
 }
 
 .transaction-column .right-side{

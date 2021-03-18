@@ -1,14 +1,13 @@
 .transaction-controls{
-	font-size: 24px;
+	font-size: 20px;
 	padding: 5px;
-	border: 2px solid black;
 	margin: 10px;
 }
 
 .transaction-controls .buy{
-	width: 50%;
+
 }
 
 .transaction-controls .sell{
-	width: 50%;
+	
 }
