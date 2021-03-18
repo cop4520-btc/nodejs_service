@@ -6,3 +6,9 @@ export interface LoginResponse
 	error: string,
 	userData: UserDataWithoutPassword
 }
+
+export interface RegisterResponse
+{
+	success: boolean,
+	error: string
+}
