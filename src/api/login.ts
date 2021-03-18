@@ -90,6 +90,7 @@ export async function login(request: Request, response: Response, next: Callable
 			returnPackage.userData.balance = userData.balance;
 			returnPackage.userData.spent = userData.spent;
 
+			connection.end();
 			returnPackage.success = true;
 			response.json(returnPackage);
 			response.status(200);
@@ -105,6 +106,4 @@ export async function login(request: Request, response: Response, next: Callable
 		connection.end();
 		return;
 	}
-
-	connection.end();
 }
