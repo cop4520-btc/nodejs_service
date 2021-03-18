@@ -1,5 +1,6 @@
 import { useState, FormEvent } from "react";
 import { Button, Form, Image } from "react-bootstrap";
+import md5 from "md5";
 
 // Util imports
 import buildpath from "../util/buildpath";
@@ -10,12 +11,6 @@ import { LoginResponse } from "../commonTypes/ApiResponses";
 
 // CSS imports
 import "./LoginPage.css";
-
-interface LoginData
-{
-	username: string,
-	password: string
-}
 
 export default function LoginPage()
 {
@@ -53,6 +48,9 @@ export default function LoginPage()
 			setMessage(data.error);
 			return;
 		}
+
+		// store the userData in local storage
+		localStorage.setItem("user_data", JSON.stringify(data.userData));
 	};
 
 	const changeUsername = (event: any) =>
@@ -64,7 +62,7 @@ export default function LoginPage()
 	const changePassword = (event: any) =>
 	{
 		event.preventDefault();
-		password = event.target.value;
+		password = md5(event.target.value);
 	}
 
 	return (
