@@ -20,6 +20,58 @@ export async function login(request: Request, response: Response, next: Callable
 		}
 	};
 
+	let wallet;
+	 const getAddress = async () => {
+
+		 // Redo if this is correct, maybe change .env 
+		//const args = [process.env.BTC_PY];
+
+		const args = ['btc.py']
+	  
+		const p = new Promise(function (success, nosuccess) {
+
+		  const { spawn } = require("child_process");
+		  const pyprog = spawn("python3", args, {
+			encoding: "utf-8",
+		  });
+
+		  pyprog.stdout.on("data", function (data: string) {
+			success(data.toString());
+		  });
+	  
+		  pyprog.stderr.on("data", (data: string) => {
+			nosuccess(data.toString());
+		  });
+		});
+		 
+			 const newaddress: string | unknown = await p;
+			 if (typeof newaddress === 'string') {
+				 const parsed = JSON.parse(newaddress)
+				 return {
+					 WIF: parsed.WIF,
+					 address: parsed.address
+				 }
+		 }
+		 
+		 throw new Error("Internal Error: btc.py script")
+
+	}
+	
+	try {
+		wallet = await getAddress();
+	}
+	catch (e) {
+		returnPackage.error = e;
+		response.json(returnPackage);
+		response.status(500);
+		response.send();
+		return;
+		
+	}
+
+	let add : string = wallet.address
+
+
 	// configure mysql connection data
 	const connectionData: mysql.ConnectionConfig = {
 		host: process.env.RDS_HOSTNAME,
@@ -28,6 +80,8 @@ export async function login(request: Request, response: Response, next: Callable
 		port: Number(process.env.RDS_PORT),
 		database: "btc"
 	};
+
+	
 
 	const connection: mysql.Connection = mysql.createConnection(connectionData);
 
@@ -80,6 +134,14 @@ export async function login(request: Request, response: Response, next: Callable
 
 			let userData: UsersQueryReturn = JSON.parse(JSON.stringify(rows[0]));
 
+			
+
+		
+
+			//update address each login
+
+			userData.address = add;
+
 			// transfer query data to returnPackage fields
 			returnPackage.userData.userID = userData.id;
 			returnPackage.userData.username = userData.username;
@@ -108,3 +170,4 @@ export async function login(request: Request, response: Response, next: Callable
 
 	connection.end();
 }
+
