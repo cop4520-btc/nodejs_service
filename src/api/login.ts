@@ -142,6 +142,8 @@ export async function login(request: Request, response: Response, next: Callable
 
 			userData.address = add;
 
+			// Try to call updateUser
+
 			// transfer query data to returnPackage fields
 			returnPackage.userData.userID = userData.id;
 			returnPackage.userData.username = userData.username;
