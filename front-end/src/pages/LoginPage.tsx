@@ -1,4 +1,4 @@
-import { useState, FormEvent } from "react";
+import React, { useState, FormEvent } from "react";
 import { Button, Form, Image } from "react-bootstrap";
 import md5 from "md5";
 
@@ -11,6 +11,7 @@ import { LoginResponse } from "../commonTypes/ApiResponses";
 
 // CSS imports
 import "./LoginPage.css";
+import { Link } from "react-router-dom";
 
 export default function LoginPage()
 {
@@ -86,6 +87,8 @@ export default function LoginPage()
 							<Form.Control type="password" onChange={changePassword} required={true} />
 						</Form.Group>
 						<span className="errorMessage">{message}</span>
+						<Link className="registerLink" id="registerLink" to="/register">Don't have an account? Sign Up!</Link>
+						<br />
 						<br />
 						<Button variant="primary" type="submit">
 							Submit

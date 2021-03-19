@@ -27,7 +27,7 @@ export default function RegisterPage()
 		// ensure that both password fields match
 		if (password !== confirmPassword)
 		{
-			setMessage("Passwords don't match");
+			setMessage("Passwords do not match");
 			return;
 		}
 
