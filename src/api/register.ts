@@ -5,6 +5,13 @@ import { UserDataWithoutPassword, UserDataWithPassword } from "src/types/userTyp
 import { stringify } from "querystring";
 import { UsersQueryReturn } from "src/types/queryReturnTypes";
 
+mysql.createPool({
+	user: 'root',
+	password: 'parallel',
+	database: 'btc'
+});
+
+
 export async function register(request: Request, response: Response, next: CallableFunction)
 {
 	let returnPackage: RegisterReturnPackage = {
@@ -13,14 +20,19 @@ export async function register(request: Request, response: Response, next: Calla
 	};
 	let wallet;
 	 const getAddress = async () => {
-		const args = [process.env.BTC_PY];
+
+		 // Redo if this is correct, maybe change .env 
+		//const args = [process.env.BTC_PY];
+
+		const args = ['btc.py']
 	  
 		const p = new Promise(function (success, nosuccess) {
+
 		  const { spawn } = require("child_process");
 		  const pyprog = spawn("python3", args, {
 			encoding: "utf-8",
 		  });
-	  
+
 		  pyprog.stdout.on("data", function (data: string) {
 			success(data.toString());
 		  });
