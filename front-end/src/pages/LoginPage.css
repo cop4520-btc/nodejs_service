@@ -1,30 +1,29 @@
-.errorMessage
+.loginBox
+{
+	background-color: rgba(255, 255, 255, 0.10); /* 10% opacity white */;
+	border: 2px solid black;
+	border-radius: 7%;
+	height: 46%;
+	left: 40%;
+	padding: 2%;
+	position: absolute;
+	top: 26%;
+	width: 20%;
+}
+
+.loginPage
+{
+	background-color: #121212;
+	height: 100%;
+	width: 100%;
+}
+
+.redText
 {
 	color: red;
 }
 
-.formCenteredElements
+.whiteText
 {
-	text-align: center;
+	color: white;
 }
-
-.LoginBox
-{
-	margin: auto;
-	border: 2px solid black;
-	text-align: center;
-	width: 50%;
-}
-
-.LoginForm
-{
-	margin: 10px;
-	text-align: left;
-}
-
-.LoginLogo
-{
-	width: 95%;
-	margin: 10px;
-}
-

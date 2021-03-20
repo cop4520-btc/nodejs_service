@@ -69,25 +69,26 @@ export default function LoginPage()
 	}
 
 	return (
-		<div>
-			<div className="LoginBox">
-				<div className="LoginLogo">
+		<div className="loginPage">
+			<div className="loginBox">
+				<div className="logoDiv">
 					<Image src={process.env.PUBLIC_URL + "/Bitcoin_logo.svg"} alt="Bitcoin logo"/>
 				</div>
-				<div className="LoginForm">
+				<div className="loginForm">
 					<Form onSubmit={doLogin}>
 						<Form.Group controlId="formUsername">
-							<Form.Label>Username</Form.Label>
+							<Form.Label className="whiteText">Username</Form.Label>
 							<br />
 							<Form.Control type="text" onChange={changeUsername} required={true} />
 						</Form.Group>
 						<Form.Group controlId="formPassword">
-							<Form.Label>Password</Form.Label>
+							<Form.Label className="whiteText">Password</Form.Label>
 							<br />
 							<Form.Control type="password" onChange={changePassword} required={true} />
 						</Form.Group>
-						<span className="errorMessage">{message}</span>
 						<div className="formCenteredElements">
+							<span className="redText">{message}</span>
+							<br />
 							<Link className="registerLink" id="registerLink" to="/register">Don't have an account? Sign Up!</Link>
 							<br />
 							<br />
