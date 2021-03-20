@@ -84,7 +84,7 @@ export class TransactionsPage extends React.Component<TransactionsPageProps, Get
 		};
 
 		return (
-			<div>
+			<div className="transactionPage">
 				<div>
 					<NavigationBar />
 				

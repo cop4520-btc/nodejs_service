@@ -1,11 +1,12 @@
 .NavbarDiv
 {
-	display: inline-block;
+	background-color: rgba(255, 255, 255, 0.10); /* 10% opacity white */;
 	border: 1.75px solid black;
-	margin: 10px;
+	display: inline-block;
 	height: 10%;
-	width: 100%;
+	margin: 10px;
 	padding: 5px;
+	width: 99%;
 }
 
 .NavBarLogo
