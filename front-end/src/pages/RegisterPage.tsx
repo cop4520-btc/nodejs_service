@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Image } from 'react-bootstrap';
+import { Link } from "react-router-dom";
 import { RegisterResponse } from "../commonTypes/ApiResponses";
 import md5 from "md5";
 
@@ -100,38 +101,50 @@ export default function RegisterPage()
 	return(
 		<div className="registerPage">
 			<div className="registerBox">
+				<div className="logoDiv">
+					<Image src={process.env.PUBLIC_URL + "/Bitcoin_logo.svg"} />
+				</div>
+
 				<Form onSubmit={doRegister}>
-					<Form.Group controlId="username">
-						<Form.Label>Username</Form.Label>
-						<Form.Control className="text-input" type="text" onChange={changeUsername} required={true} />
-					</Form.Group>
+					<div>
+						<Form.Group controlId="username">
+							<Form.Label className="whiteText">Username</Form.Label>
+							<Form.Control className="text-input" type="text" onChange={changeUsername} required={true} />
+						</Form.Group>
 
-					<Form.Group controlId="password">
-						<Form.Label>Password</Form.Label>
-						<Form.Control className="text-input" type="password" onChange={changePassword} required={true} />
-					</Form.Group>
+						<Form.Group controlId="password">
+							<Form.Label className="whiteText">Password</Form.Label>
+							<Form.Control className="text-input" type="password" onChange={changePassword} required={true} />
+						</Form.Group>
 
-					<Form.Group controlId="confirmPassword">
-						<Form.Label>Confirm Password</Form.Label>
-						<Form.Control className="text-input" type="password" onChange={changeConfirmPassword} required={true} />
-					</Form.Group>
+						<Form.Group controlId="confirmPassword">
+							<Form.Label className="whiteText">Confirm Password</Form.Label>
+							<Form.Control className="text-input" type="password" onChange={changeConfirmPassword} required={true} />
+						</Form.Group>
 
-					<Form.Group controlId="firstname">
-						<Form.Label>Firstname</Form.Label>
-						<Form.Control className="text-input" type="text" onChange={changeFirstname} required={true} />
-					</Form.Group>
+						<Form.Group controlId="firstname">
+							<Form.Label className="whiteText">Firstname</Form.Label>
+							<Form.Control className="text-input" type="text" onChange={changeFirstname} required={true} />
+						</Form.Group>
 
-					<Form.Group controlId="lastname">
-						<Form.Label>Lastname</Form.Label>
-						<Form.Control className="text-input" type="text" onChange={changeLastname} required={true} />
-					</Form.Group>
-				
-					<Button variant="primary" type="submit">
-						Sign up
-					</Button>
+						<Form.Group controlId="lastname">
+							<Form.Label className="whiteText">Lastname</Form.Label>
+							<Form.Control className="text-input" type="text" onChange={changeLastname} required={true} />
+						</Form.Group>
+					</div>
+					<div className="formCenteredElements">
+						<span className="errorMessage">{message}</span>
+						<br />
+						<Button variant="primary" type="submit">
+							Sign up
+						</Button>
+						<br />
+						<br />
+						<Link to="/">
+							Return to Login
+						</Link>
+					</div>
 				</Form>
-
-				<span className="errorMessage">{message}</span>
 			</div>
 		</div>
 	);

@@ -1,4 +1,4 @@
-import React, { useState, FormEvent } from "react";
+import { useState, FormEvent } from "react";
 import { Button, Form, Image } from "react-bootstrap";
 import md5 from "md5";
 
