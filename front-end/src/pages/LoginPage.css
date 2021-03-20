@@ -3,6 +3,11 @@
 	color: red;
 }
 
+.formCenteredElements
+{
+	text-align: center;
+}
+
 .LoginBox
 {
 	margin: auto;

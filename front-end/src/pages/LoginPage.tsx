@@ -87,12 +87,14 @@ export default function LoginPage()
 							<Form.Control type="password" onChange={changePassword} required={true} />
 						</Form.Group>
 						<span className="errorMessage">{message}</span>
-						<Link className="registerLink" id="registerLink" to="/register">Don't have an account? Sign Up!</Link>
-						<br />
-						<br />
-						<Button variant="primary" type="submit">
-							Submit
-						</Button>
+						<div className="formCenteredElements">
+							<Link className="registerLink" id="registerLink" to="/register">Don't have an account? Sign Up!</Link>
+							<br />
+							<br />
+							<Button variant="primary" type="submit">
+								Submit
+							</Button>
+						</div>
 					</Form>
 				</div>
 			</div>
