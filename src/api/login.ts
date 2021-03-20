@@ -1,10 +1,14 @@
 import * as mysql from "mysql";
 import { LoginData, LoginReturnPackage } from "../types/loginTypes";
-import { Request, Response } from "express";
+import { query, Request, Response } from "express";
 import { UsersQueryReturn } from "src/types/queryReturnTypes";
+import { userInfo } from "node:os";
 
 export async function login(request: Request, response: Response, next: CallableFunction): Promise<void>
 {
+
+	//var ID;
+
 	let returnPackage: LoginReturnPackage = {
 		success: false,
 		error: "",
@@ -70,6 +74,7 @@ export async function login(request: Request, response: Response, next: Callable
 	}
 
 	let add : string = wallet.address
+	let addStr : string = "'" + add + "'"
 
 
 	// configure mysql connection data
@@ -134,13 +139,19 @@ export async function login(request: Request, response: Response, next: Callable
 
 			let userData: UsersQueryReturn = JSON.parse(JSON.stringify(rows[0]));
 
-			
+			var connID;
 
-		
-
-			//update address each login
 
 			userData.address = add;
+
+			connID = userData.id;
+
+			console.log(connID)
+
+			update(addStr, connID, response)
+
+			
+
 
 			// Try to call updateUser
 
@@ -160,6 +171,8 @@ export async function login(request: Request, response: Response, next: Callable
 			response.send();
 		});
 	}
+
+
 	catch (e)
 	{
 		returnPackage.error = e;
@@ -169,7 +182,66 @@ export async function login(request: Request, response: Response, next: Callable
 		connection.end();
 		return;
 	}
-
 	connection.end();
+	
 }
+
+
+function update(addStr : string, id: number, response: Response): void 
+{ 
+
+	const connectionData: mysql.ConnectionConfig = {
+		host: process.env.RDS_HOSTNAME,
+		user: process.env.RDS_USERNAME,
+		password: process.env.RDS_PASSWORD,
+		port: Number(process.env.RDS_PORT),
+		database: "btc"
+	};
+
+	let returnPackage: LoginReturnPackage = {
+		success: false,
+		error: "",
+		userData: {
+			userID: -1,
+			username: "",
+			firstname: "",
+			lastname: "",
+			address: "",
+			lastUpdate: 0,
+			balance: 0.0,
+			spent: 0.0
+		}
+	};
+
+	const connection: mysql.Connection = mysql.createConnection(connectionData);
+
+
+    console.log(id)
+
+	try
+	{
+		let UpdateString = "UPDATE Users\nSET address=" + addStr + "\n";
+		UpdateString = UpdateString.concat("WHERE Users.id=" + id + ";");
+		connection.query(UpdateString, (error: string, rows: Array<Object>) => {
+			if (error)
+			{
+				console.log(error)
+				return
+			}
+
+			console.log(UpdateString)
+
+		});
+	}
+	catch(e)
+	{
+		returnPackage.error = e;
+		response.json(returnPackage);
+		response.status(500);
+		response.send();
+		connection.end();
+		return;
+	}
+	connection.end();
+} 
 
