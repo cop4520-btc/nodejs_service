@@ -35,14 +35,6 @@ export class Wallet extends React.Component{
 
 		return(
 			<div className="transaction-card">
-				{/* <div className="walletTitle">
-					<h3 className="whiteText">
-						Your Wallet
-					</h3>
-				</div>
-				<div className="walletData">
-					<span>Balance: {}</span>
-				</div> */}
 				<Card border="secondary" style={{ width: '18rem' }}>
     				<Card.Header>Your Wallet</Card.Header>
 					<Card.Body>
