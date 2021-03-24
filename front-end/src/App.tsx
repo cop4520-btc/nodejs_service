@@ -15,6 +15,9 @@ import RegisterPage from "./pages/RegisterPage";
 
 
 
+// Page imports
+import { TransactionsPage } from "./pages/TransactionsPage";
+
 function App()
 {
 	return (
@@ -28,7 +31,7 @@ function App()
 						<RegisterPage />
 					</Route>
 					<Route exact path = "/transactions">
-						Todo: Implement transactions page
+						<TransactionsPage />
 					</Route>
 				</Switch>
 			</Router>

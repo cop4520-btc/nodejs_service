@@ -1,0 +1,18 @@
+.transactionPage
+{
+	background-color: #121212;
+	height: 100%;
+	width: 100%;
+}
+
+.transaction-column{
+	display: flex;
+}
+
+.transaction-column .left-side{
+	flex: .5;
+}
+
+.transaction-column .right-side{
+	flex: 3;
+}

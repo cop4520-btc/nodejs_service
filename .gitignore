@@ -107,5 +107,5 @@ dist
 dist/
 build/
 
-# VS Code directory
+# VS code directories
 .vscode/

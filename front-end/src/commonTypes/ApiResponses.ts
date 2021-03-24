@@ -12,3 +12,20 @@ export interface RegisterResponse
 	success: boolean,
 	error: string
 }
+
+export interface Transaction
+{
+	transactionID: string,
+	userID: number,
+	priceUSD: number,
+	priceBTC: number,
+	successful: boolean
+}
+
+export interface GetTransactionsResponse
+{
+	success: boolean,
+	error: string,
+	numTransactions: number,
+	transactions: Array<Transaction>
+}

@@ -1,18 +1,41 @@
-* {box-sizing: border-box}
-
-.signup-box{
-	width: 100%;
-	padding: 12px 20px;
-	margin: 8px 0;
-	border: 2px solid black;
-	background-color: white;
+.form-control
+{
+	background-color: rgba(255, 255, 255, 0.40);
 }
 
-.text-input{
+.formCenteredElements
+{
+	text-align: center;
+}
+
+.whiteText
+{
+	color: white;
+}
+
+.logoDiv
+{
+	text-align: center;
+	padding-bottom: 5%;
+}
+
+.registerBox
+{
+	background-color: rgba(255, 255, 255, 0.10); /* 10% opacity white */
+	border: 2px solid black;
+	border-radius: 7%;
+	height: 82%;
+	left: 30%;
+	margin: auto;
+	padding: 2%;
+	position: absolute;
+	top: 9%;
+	width: 40%;
+}
+
+.registerPage
+{
+	background-color: #121212;
+	height: 100%;
 	width: 100%;
-	padding: 15px;
-	margin: 5px 0 22px 0;
-	display: inline-block;
-	border: none;
-	background: #f1f1f1;
 }
