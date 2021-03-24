@@ -1,9 +1,6 @@
 import * as express from "express";
 import request, { RequestCallback, Response } from "request";
 
-// type imports
-import { MavenApiOptions, MavenPurchaseReturn } from "../types/mavenTypes";
-
 interface MakeTransactionInput
 {
 	userID: number,
@@ -46,18 +43,11 @@ export async function makeTransaction(req: express.Request, res: express.Respons
 		return;
 	}
 
-	let apiOptions: MavenApiOptions = {
-		url: process.env.MAVEN_URI + "/purchase:" + process.env.MAVEN_PORT,
-		request: "GET",
-		json: {
-			id: input.userID,
-			amount: input.amountUSD
-		}
-	};
+	const requestArgs: string = "?id=" + String(input.userID) + "&amount=" + String(input.amountUSD);
 
-	const mavenUri: string = process.env.MAVEN_URI + process.env.MAVEN_PORT + "/purchase";
+	const mavenUri: string = process.env.MAVEN_URI + process.env.MAVEN_PORT + "/purchase" + requestArgs;
 
-	const handleMavenResponse: RequestCallback = (error: any, response: Response, body: any): void =>
+	const handleMavenResponse: RequestCallback = async (error: any, response: Response, body: any): Promise<void> =>
 	{
 		if (error)
 		{
@@ -75,5 +65,5 @@ export async function makeTransaction(req: express.Request, res: express.Respons
 		return;
 	};
 
-	request(mavenUri, apiOptions, handleMavenResponse);
+	request(mavenUri, handleMavenResponse);
 }

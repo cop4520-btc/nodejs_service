@@ -1,8 +1,7 @@
 export interface MavenApiOptions
 {
 	url: string, // uri and port
-	request: string,
-	json: MavenPurchaseInput
+	request: string
 }
 
 export interface MavenPurchaseInput
