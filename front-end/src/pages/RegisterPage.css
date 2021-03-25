@@ -1,0 +1,41 @@
+.form-control
+{
+	background-color: rgba(255, 255, 255, 0.40);
+}
+
+.formCenteredElements
+{
+	text-align: center;
+}
+
+.whiteText
+{
+	color: white;
+}
+
+.logoDiv
+{
+	text-align: center;
+	padding-bottom: 5%;
+}
+
+.registerBox
+{
+	background-color: rgba(255, 255, 255, 0.10); /* 10% opacity white */
+	border: 2px solid black;
+	border-radius: 7%;
+	height: 82%;
+	left: 30%;
+	margin: auto;
+	padding: 2%;
+	position: absolute;
+	top: 9%;
+	width: 40%;
+}
+
+.registerPage
+{
+	background-color: #121212;
+	height: 100%;
+	width: 100%;
+}

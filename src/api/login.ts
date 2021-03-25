@@ -83,7 +83,7 @@ export async function login(request: Request, response: Response, next: Callable
 		user: process.env.RDS_USERNAME,
 		password: process.env.RDS_PASSWORD,
 		port: Number(process.env.RDS_PORT),
-		database: "btc"
+		database: process.env.RDS_DATABASE
 	};
 
 	
@@ -165,6 +165,7 @@ export async function login(request: Request, response: Response, next: Callable
 			returnPackage.userData.balance = userData.balance;
 			returnPackage.userData.spent = userData.spent;
 
+			connection.end();
 			returnPackage.success = true;
 			response.json(returnPackage);
 			response.status(200);
@@ -182,8 +183,6 @@ export async function login(request: Request, response: Response, next: Callable
 		connection.end();
 		return;
 	}
-	connection.end();
-	
 }
 
 

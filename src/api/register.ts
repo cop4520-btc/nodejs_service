@@ -1,8 +1,7 @@
 import * as mysql from "mysql";
 import { RegisterReturnPackage } from "../types/registerTypes";
 import { Request, Response } from "express";
-import { UserDataWithoutPassword, UserDataWithPassword } from "src/types/userTypes";
-import { stringify } from "querystring";
+import { UserDataWithPassword } from "src/types/userTypes";
 import { UsersQueryReturn } from "src/types/queryReturnTypes";
 
 mysql.createPool({
@@ -89,7 +88,7 @@ export async function register(request: Request, response: Response, next: Calla
 		user: process.env.RDS_USERNAME,
 		password: process.env.RDS_PASSWORD,
 		port: Number(process.env.RDS_PORT),
-		database: "btc"
+		database: process.env.RDS_DATABASE
 	};
 
 	const connection: mysql.Connection = mysql.createConnection(connectionData);
