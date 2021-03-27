@@ -7,6 +7,12 @@ export interface LoginResponse
 	userData: UserDataWithoutPassword
 }
 
+export interface MakeTransactionResponse
+{
+	success: boolean,
+	error: string
+}
+
 export interface RegisterResponse
 {
 	success: boolean,

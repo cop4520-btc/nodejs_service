@@ -4,6 +4,12 @@ export interface LoginApiPayload
 	password: string
 }
 
+export interface MakeTransactionApiPayload
+{
+	userID: number,
+	amountUSD: number
+}
+
 export interface RegisterApiPayload
 {
 	username: string,
