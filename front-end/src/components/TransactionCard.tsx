@@ -57,6 +57,7 @@ export class TransactionCard extends React.Component<TransactionCardProps>
 							</div>
 							<div className="price-BTC">
 								Price BTC: {this.props.transactionData.priceBTC}
+								
 							</div>
 							<div className="price-USD">
 								Price USD: {this.props.transactionData.priceUSD}

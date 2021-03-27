@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Card } from "react-bootstrap";
+import { Button, Card, FormControl, InputGroup } from "react-bootstrap";
 
 import "./TransactionControls.css";
 
@@ -17,7 +17,19 @@ export class TransactionControls extends React.Component{
 						
 						</Card.Text>
 						<Button variant="outline-primary">Buy</Button>{' '}
+						<InputGroup className="mb-3">
+							<FormControl
+							aria-label="Default"
+							aria-describedby="inputGroup-sizing-default"
+							/>
+						</InputGroup>
 						<Button variant="outline-primary">Sell</Button>{' '}
+						<InputGroup className="mb-3">
+							<FormControl
+							aria-label="Default"
+							aria-describedby="inputGroup-sizing-default"
+							/>
+						</InputGroup>
 					</Card.Body>
 				</Card>
 			</div>
