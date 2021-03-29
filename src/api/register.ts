@@ -4,12 +4,68 @@ import { Request, Response } from "express";
 import { UserDataWithPassword } from "src/types/userTypes";
 import { UsersQueryReturn } from "src/types/queryReturnTypes";
 
+mysql.createPool({
+	user: 'root',
+	password: 'parallel',
+	database: 'btc'
+});
+
+
 export async function register(request: Request, response: Response, next: CallableFunction)
 {
 	let returnPackage: RegisterReturnPackage = {
 		success: false,
 		error: ""
 	};
+	let wallet;
+	 const getAddress = async () => {
+
+		 // Redo if this is correct, maybe change .env 
+		//const args = [process.env.BTC_PY];
+
+		const args = ['btc.py']
+	  
+		const p = new Promise(function (success, nosuccess) {
+
+		  const { spawn } = require("child_process");
+		  const pyprog = spawn("python3", args, {
+			encoding: "utf-8",
+		  });
+
+		  pyprog.stdout.on("data", function (data: string) {
+			success(data.toString());
+		  });
+	  
+		  pyprog.stderr.on("data", (data: string) => {
+			nosuccess(data.toString());
+		  });
+		});
+		 
+			 const newaddress: string | unknown = await p;
+			 if (typeof newaddress === 'string') {
+				 const parsed = JSON.parse(newaddress)
+				 return {
+					 WIF: parsed.WIF,
+					 address: parsed.address
+				 }
+		 }
+		 
+		 throw new Error("Internal Error: btc.py script")
+
+	}
+	
+	try {
+		wallet = await getAddress();
+	}
+	catch (e) {
+		returnPackage.error = e;
+		response.json(returnPackage);
+		response.status(500);
+		response.send();
+		return;
+		
+	}
+
 
 	// parse in new user data
 	let userData: UserDataWithPassword = {
@@ -18,11 +74,13 @@ export async function register(request: Request, response: Response, next: Calla
 		password: request.body.password,
 		firstname: request.body.firstname,
 		lastname: request.body.lastname,
-		address: request.body.address,
+		address: wallet.address,
 		lastUpdate: 0,
 		balance: 0.0,
 		spent: 0.0
 	};
+
+	
 
 	// configure mysql connection data
 	const connectionData: mysql.ConnectionConfig = {
